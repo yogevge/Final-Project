@@ -1,0 +1,2 @@
+serviceClass: neo4jingwtpackage.client.GreetingService
+path: D4A62DFED37C4560D9C336A7B97ED40B.gwt.rpc

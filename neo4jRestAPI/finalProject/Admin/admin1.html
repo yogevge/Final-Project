@@ -1,0 +1,137 @@
+<html>
+<head>
+    <title>Administrator page </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="bootstrap-multiselect.css" type="text/css" />
+
+
+    
+    <script type="text/javascript">
+        var APIEndPoint = 'http://localhost:7474/db';
+    </script>
+    <script src="functions.js"></script>
+    <script src="main.js"></script>
+
+</head>
+<body>
+
+    <div role="navigation" class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <form role="search" class="navbar-form" id="search">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Search for Person" class="form-control" name="search">
+                                </div>
+                                <button class="btn btn-default" type="submit">Search</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-header col-sm-6 col-md-6">
+                    <div class="logo-well">
+                    </div>
+                    <div class="navbar-brand">
+                        <div class="brand">Neo4j people</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <fieldset>
+                    <div id="legend">
+                        <legend class="">Add node to graph</legend>
+                    </div>
+
+
+                    <div class="control-group">
+                        <!-- Person Name -->
+                        <label class="control-label" for="fullName">Full Name</label>
+                        <div class="controls">
+                            <input type="text" id="fullName" name="fullName" placeholder="" class="input-xlarge">
+                            <p class="help-block">Please insert forename and surname</p>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Info on the person -->
+                        <label class="control-label" for="info">Info on the person</label>
+                        <div class="controls">
+                            <textarea class="form-control" rows="3"></textarea>
+                            <p class="help-block">any data about the person</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <select id="example-getting-started" multiple="multiple">
+<!--                    <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+
+-->
+                    </select>
+
+                    <br>
+                    <br>
+
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success" onclick="createUser();" id="MyButton">Submit</button>
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+
+
+
+                </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="title">Details</div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 ">
+                        <p>Info	</p>
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <p>Friends of person</p>
+                        <ul id="fop">
+                            <!--here is info from the function listUser(list) -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
