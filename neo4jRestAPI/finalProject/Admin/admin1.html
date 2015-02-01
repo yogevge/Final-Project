@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="typeahead.bundle.min.js"></script>
+    <link rel="stylesheet" href="admin.css">
 
+    
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
@@ -39,10 +42,10 @@
                         <li>
                             <form role="search" class="navbar-form" id="search">
                                 <div class="form-group">
-                                    <input type="text" placeholder="Search for Person" class="form-control" name="search">
+                                    <input id="search_person" type="text" placeholder="Search for Person" class="form-control" name="search">
                                 </div>
-                                <button class="btn btn-default" type="submit">Search</button>
-                            </form>
+                            <button id="search_btn" class="btn btn-default" type="submit">Search</button>
+                            <form>
                         </li>
                     </ul>
                 </div>
@@ -79,8 +82,10 @@
                         <!-- Info on the person -->
                         <label class="control-label" for="info">Info on the person</label>
                         <div class="controls">
-                            <textarea class="form-control" rows="3"></textarea>
-                            <p class="help-block">any data about the person</p>
+                            <textarea id="properties" rows="3" cols="60"></textarea>
+                            <p class="help-block">If you'd like to add some properties</p>
+                            <p class="help-block">Format is: <b>property#1:"info#1" , property#2:"info#2"</b></p>
+                            <p class="help-block">Example: <b>from:"Israel" , age:"25" , sex:"female"</b></p>
                         </div>
                     </div>
 
@@ -90,8 +95,8 @@
                     <select id="example-getting-started" multiple="multiple">
 <!--                    <option value="cheese">Cheese</option>
                         <option value="tomatoes">Tomatoes</option>
-
 -->
+
                     </select>
 
                     <br>
@@ -101,7 +106,7 @@
                     <div class="control-group">
                         <!-- Button -->
                         <div class="controls">
-                            <button class="btn btn-success" onclick="createUser();" id="MyButton">Submit</button>
+                            <button class="btn btn-success" id="create_user">Submit</button>
                         </div>
                     </div>
 
@@ -116,10 +121,13 @@
         </div>
         <div class="col-md-7">
             <div class="panel panel-default">
-                <div class="panel-heading" id="title">Details</div>
+                <div class="panel-heading" id="title">Details
+                    <div class="pull-right"><button id="deleteUserBtn" type="button" class="btn btn-danger btn-sm hidden">Delete</button></div>
+                </div>
+                
                 <div class="row">
-                    <div class="col-sm-4 col-md-4 ">
-                        <p>Info	</p>
+                    <div id="usersName" class="col-sm-4 col-md-4 ">
+
                     </div>
                     <div class="col-md-8 col-sm-8">
                         <p>Friends of person</p>

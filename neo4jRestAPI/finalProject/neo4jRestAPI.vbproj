@@ -81,11 +81,13 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\admin.css" />
     <Content Include="Admin\admin1.html" />
     <Content Include="Admin\bootstrap-multiselect.css" />
     <Content Include="Admin\bootstrap-multiselect.js" />
     <Content Include="Admin\functions.js" />
     <Content Include="Admin\main.js" />
+    <Content Include="Admin\typeahead.bundle.min.js" />
     <Content Include="Client\client1.html" />
     <Content Include="Client\functions.js" />
     <Content Include="Client\main.js" />
