@@ -1,2 +1,0 @@
-# Module neo4jinjgwt
-# RPC service class, partial path of RPC policy file

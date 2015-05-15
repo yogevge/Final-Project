@@ -1,9 +1,0 @@
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\bin\finalProject.dll.config
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\bin\finalProject.dll
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\bin\finalProject.pdb
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\bin\finalProject.xml
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\obj\Debug\finalProject.Resources.resources
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\obj\Debug\finalProject.vbproj.GenerateResource.Cache
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\obj\Debug\finalProject.dll
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\obj\Debug\finalProject.xml
-c:\users\yogev\documents\visual studio 2013\Projects\finalProject\finalProject\obj\Debug\finalProject.pdb
