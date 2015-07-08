@@ -3,20 +3,19 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , path = require('path');
+var express = require('express');
+var routes = require('./routes');
+var http = require('http');
+var path = require('path');
+var engine = require('ejs-locals');
 
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', __dirname + '/public/partials');
+app.engine('ejs', engine);
 app.set('view engine', 'ejs');
-//app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.logger('dev'));
@@ -25,31 +24,34 @@ app.use(express.methodOverride());
 app.use(app.router);
 
 // development only
-/*
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-*/
 
 app.locals({
-    title: 'Node-Neo4j Template'    // default title
+    title: 'Neo4j Einstein'
 });
 
 // Routes
 
-app.get('/', routes.site.index);//routes.site.index
-app.get('/admin', routes.site.admin);//routes.site.index
-app.get('/client', routes.site.client);//routes.site.index
+app.get('/', routes.site.index);
+app.get('/admin', routes.site.admin);
+app.post('/admin', routes.site.createPerson);
+app.post('/admin/modify', routes.site.modifyPerson);
+app.post('/admin/remove', routes.site.removePerson);
 
+app.get('/persons',routes.persons.list);
+app.get('/persons/:name',routes.persons.show);
+app.get('/persons/description/:name',routes.persons.description);
 
-app.get('/users', routes.users.list);
-app.post('/users', routes.users.create);
-app.get('/users/:id', routes.users.show);
-app.post('/users/:id', routes.users.edit);
-app.del('/users/:id', routes.users.del);
+app.post('/persons', routes.persons.create);
+app.delete('/persons/:name', routes.persons.deletePerson);
 
-app.post('/users/:id/follow', routes.users.follow);
-app.post('/users/:id/unfollow', routes.users.unfollow);
+app.get('/persons/:name/relationship', routes.persons.getRelationship);
+app.get('/persons/:name/relationships', routes.persons.getRelationships);
+app.post('/persons/:name/relationship', routes.persons.createRelationship);
+app.delete('/persons/:name/relationship', routes.persons.removeRelationship);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening at: http://localhost:%d/', app.get('port'));

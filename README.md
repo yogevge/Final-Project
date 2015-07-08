@@ -1,6 +1,6 @@
-# Social-networking-application-on-Einstein-archives-with-graphic-database
+## Installation
+If you want to run it locally you need to download this repository, to download neo4j v2.1.8
 
-My final project about "Social-networking-application-on-Einstein-archives-with-graphic-database" is in the directory
-Neo4jRestAPI->finalProject
+npm install
+npm start
 
-In there, the specific code files are inside the Admin and Client folder.
