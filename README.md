@@ -1,6 +1,6 @@
 ##Social-networking-application-on-Einstein-archives-with-graphic-database
 
-Yogev gershon
+By: Yogev gershon
 This project uses neo4j as DB
 node.js as server
 d3.js as a graphic library
