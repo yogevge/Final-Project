@@ -95,13 +95,13 @@
             var linkEnter = link.enter().append("line")
                 .attr("class", "link")
                 .style("stroke-width", "4px");
-
             link.exit().remove();
 
             linktext = linksContainer.selectAll("g.linklabelholder").data(links);
 
             var linktextEnter = linktext.enter().append("g")
-                .attr("class", "linklabelholder");
+                .attr("class", "linklabelholder")
+                .on("click", selectRelationshipTypes);
 
             linktextEnter.append("rect")
                 .attr("class", "background")
@@ -134,25 +134,20 @@
                 .call(drag);
 
             nodeEnter.append("title").text(function(d) { return d.name; });
-            nodeEnter.append("circle").attr("r", 35);
+            nodeEnter.append("circle").attr("r", 50);
             nodeEnter.append("text").each(function (d) {
                 var arr = d.name.split(" ");
                 if (arr != undefined) {
                     for (i = 0; i < arr.length; i++) {
                         d3.select(this).append("tspan")
                             .text(arr[i])
-                            .attr("dy", i ? ".9em" : 0)
+                            .attr("dy", i ? "1em" : 0)
                             .attr("x", 0)
                             .attr("text-anchor", "middle")
                             .attr("class", "tspan" + i);
                     }
                 }
             });
-            /*
-                .attr("dy", ".3em")
-                .style("text-anchor", "middle")
-                .text(function(d) { return d.name.split(" ", "\n"); });
-            */
 
             node.exit().remove();
             force.start();
@@ -212,29 +207,6 @@
                 if(nodes.filter(function(n) {return n.id === nodesArray[i].id;}).length === 0)
                     nodes.push(nodesArray[i]);
         }
-
-        /*
-        $(document).on('keyup',function(evt) {
-            if (evt.keyCode == 46 && selectedNode != null) {
-                var i = 0;
-                while (i < links.length) {
-                    if ((links[i]['source'] == selectedNode) || (links[i]['target'] == selectedNode)) {
-                        links.splice(i, 1);
-                    }
-                    else i++;
-                }
-                for (var i = 0; i < nodes.length; i++) {
-                    if (nodes[i].name == selectedNode.name) {
-                        nodes.splice(i, 1);
-                        break;
-                    }
-                }
-                d3.select(".selected").classed("selected", false);
-                selectedNode = null;
-                startGraph();
-            }
-        });
-        */
 
         function addNewLinks(linksArray){
             var edges = convertLinksArray(linksArray);
@@ -306,6 +278,17 @@
                 $(".image").attr("src", d.description["image"]);
             }
             selectedNode = d;
+        }
+
+        function selectRelationshipTypes(thisData){
+            console.log(thisData);
+            d3.selectAll("line").classed("lineselected", false);
+            d3.selectAll("line")
+                .filter(function (d) { return d.type === thisData.type; })
+                .classed("lineselected", true);
+
+        //    var lines = d3.selectAll("line").datum(function(d){return (d.type == "Politics")?d:null; });
+            //for(var i=0; i<lines.length; i++)
         }
     };
 
